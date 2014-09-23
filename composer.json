@@ -1,18 +1,20 @@
 {
-    "name":             "opilo/postman",
-    "description":      " To Do ",
-    "homepage":         "http://opilo.com",
-    "time":             "2014-09-23",
-    "license":          "MIT",
+    "name": "opilo/postman",
+    "description": "",
     "authors": [
         {
-            "name":         "Milad rey",
-            "email":        "miladr@gmail.com",
-            "homepage":     "http://milad.io",
-            "role":         "-"
+            "name": "miladr",
+            "email": "miladr@gmail.com"
         }
     ],
     "require": {
-
-    }
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Opilo\\Postman": "src/"
+        }
+    },
+    "minimum-stability": "stable"
 }
