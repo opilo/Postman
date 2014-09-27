@@ -3,6 +3,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class UrlTunnelSmsModel extends Model {
-    public $table = "urltunnels_smses";
+class WebhookSmsModel extends Model {
+    public $table = "Webhooks_smses";
 } 

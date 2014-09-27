@@ -37,8 +37,8 @@ class PostmanServiceProvider extends ServiceProvider {
     }
 
     public function bootRepositories(){
-        $this->app->bind('Opilo\Postman\Repositories\UrlTunnelRepository', 'Opilo\Postman\Repositories\Eloquent\UrlTunnelRepositoryEloquent');
-        $this->app->bind('Opilo\Postman\Repositories\UrlTunnelSmsRepository', 'Opilo\Postman\Repositories\Eloquent\UrlTunnelSmsRepositoryEloquent');
+        $this->app->bind('Opilo\Postman\Repositories\WebhookRepository', 'Opilo\Postman\Repositories\Eloquent\WebhookRepositoryEloquent');
+        $this->app->bind('Opilo\Postman\Repositories\WebhookSmsRepository', 'Opilo\Postman\Repositories\Eloquent\WebhookSmsRepositoryEloquent');
 
     }
 }

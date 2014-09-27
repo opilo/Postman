@@ -12,7 +12,7 @@ class Init extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('urltunnels', function($table)
+        Schema::create('Webhooks', function($table)
         {
             $table->engine = 'InnoDB';
 
@@ -25,12 +25,12 @@ class Init extends Migration {
             $table->timestamp('updated_at')->nullable();
         });
 
-        Schema::create('urltunnels_smses', function($table)
+        Schema::create('Webhooks_smses', function($table)
         {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->bigInteger('urltunnel_id');
+            $table->bigInteger('Webhook_id');
             $table->mediumText('data');
             $table->tinyInteger('status')->default(0)->unsigned();
             $table->timestamp('created_at');

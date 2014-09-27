@@ -2,6 +2,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class UrlTunnelModel extends Model {
-    public $table = "urltunnels";
+class WebhookModel extends Model {
+    public $table = "Webhooks";
 } 

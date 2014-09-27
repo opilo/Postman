@@ -1,12 +1,12 @@
 <?php namespace Opilo\Postman\Repositories\Eloquent;
 
-use Opilo\Postman\Repositories\UrlTunnelSmsRepository;
-use Opilo\Postman\Models\UrlTunnelSmsModelModel as UrlTunnelSmsModelModel;
+use Opilo\Postman\Repositories\WebhookSmsRepository;
+use Opilo\Postman\Models\WebhookSmsModelModel as WebhookSmsModelModel;
 
-class UrlTunnelSmsRepositoryEloquent implements UrlTunnelSmsRepository {
+class WebhookSmsRepositoryEloquent implements WebhookSmsRepository {
     protected $model;
 
-    public function __construct(UrlTunnelSmsModelModel $model)
+    public function __construct(WebhookSmsModelModel $model)
     {
         $this->model = $model;
     }

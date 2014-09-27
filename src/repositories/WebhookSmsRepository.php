@@ -1,7 +1,7 @@
 <?php namespace Opilo\Postman\Repositories;
 
 
-interface UrlTunnelRepository {
+interface WebhookSmsRepository {
 
     public function newInstance();
 
@@ -10,5 +10,4 @@ interface UrlTunnelRepository {
     public function getById($id);
 
     public function update($id,$data);
-
 } 
