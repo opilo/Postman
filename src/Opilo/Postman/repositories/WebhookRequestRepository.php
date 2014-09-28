@@ -1,7 +1,7 @@
 <?php namespace Opilo\Postman\Repositories;
 
 
-interface WebhookSmsRepository {
+interface WebhookRequestRepository {
 
     public function newInstance();
 

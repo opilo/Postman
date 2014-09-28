@@ -3,6 +3,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class WebhookSmsModel extends Model {
-    public $table = "Webhooks_smses";
+class WebhookRequestModel extends Model {
+    public $table = "webhooks_request";
 } 

@@ -1,12 +1,12 @@
 <?php namespace Opilo\Postman\Repositories\Eloquent;
 
-use Opilo\Postman\Repositories\WebhookSmsRepository;
-use Opilo\Postman\Models\WebhookSmsModelModel as WebhookSmsModelModel;
+use Opilo\Postman\Repositories\WebhookRequestRepository;
+use Opilo\Postman\Models\WebhookRequestModelModel as WebhookRequestModelModel;
 
-class WebhookSmsRepositoryEloquent implements WebhookSmsRepository {
+class WebhookRequestRepositoryEloquent implements WebhookRequestRepository {
     protected $model;
 
-    public function __construct(WebhookSmsModelModel $model)
+    public function __construct(WebhookRequestModelModel $model)
     {
         $this->model = $model;
     }

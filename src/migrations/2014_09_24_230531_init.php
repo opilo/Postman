@@ -14,10 +14,8 @@ class Init extends Migration {
 	{
         Schema::create('Webhooks', function($table)
         {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
-            $table->bigInteger('panel_id');
+            $table->bigInteger('uid');
             $table->string('token', 100);
             $table->string('url', 100);
             $table->tinyInteger('status')->default(0)->unsigned();
@@ -25,12 +23,10 @@ class Init extends Migration {
             $table->timestamp('updated_at')->nullable();
         });
 
-        Schema::create('Webhooks_smses', function($table)
+        Schema::create('Webhooks_request', function($table)
         {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
-            $table->bigInteger('Webhook_id');
+            $table->bigInteger('webhook_id');
             $table->mediumText('data');
             $table->tinyInteger('status')->default(0)->unsigned();
             $table->timestamp('created_at');

@@ -9,7 +9,7 @@ class PostmanServiceProvider extends ServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = true;
+	protected $defer = false;
 
 	/**
 	 * Register the service provider.
@@ -18,7 +18,10 @@ class PostmanServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+        $this->app->bind(
+            'Opilo\Postman\Repositories\WebhookRepository',
+            'Opilo\Postman\Repositories\Eloquent\WebhookRepositoryEloquent'
+        );
 	}
 
 	/**
@@ -33,12 +36,12 @@ class PostmanServiceProvider extends ServiceProvider {
 
 
     public function boot(){
-        $this->bootRepositories();
+        $this->package('opilo/postman');
     }
 
     public function bootRepositories(){
         $this->app->bind('Opilo\Postman\Repositories\WebhookRepository', 'Opilo\Postman\Repositories\Eloquent\WebhookRepositoryEloquent');
-        $this->app->bind('Opilo\Postman\Repositories\WebhookSmsRepository', 'Opilo\Postman\Repositories\Eloquent\WebhookSmsRepositoryEloquent');
+        $this->app->bind('Opilo\Postman\Repositories\WebhookRequestRepository', 'Opilo\Postman\Repositories\Eloquent\WebhookRequestRepositoryEloquent');
 
     }
 }
