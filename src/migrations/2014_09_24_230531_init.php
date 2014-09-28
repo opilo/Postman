@@ -18,6 +18,8 @@ class Init extends Migration {
             $table->bigInteger('uid');
             $table->string('token', 100);
             $table->string('url', 100);
+            $table->string('pattern', 500);
+            $table->string('group', 50);
             $table->tinyInteger('status')->default(0)->unsigned();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
