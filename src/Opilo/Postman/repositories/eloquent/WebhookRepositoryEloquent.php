@@ -23,7 +23,7 @@ class WebhookRepositoryEloquent implements WebhookRepository {
         return $this->model->newInstance($attributes);
     }
 
-    public function makeNew($uid,$url,$pattern,$group)
+    public function makeNew($uid,$url,$fields,$type,$group)
     {
         $webhook = $this->model->newInstance();
 
@@ -31,7 +31,8 @@ class WebhookRepositoryEloquent implements WebhookRepository {
         $attributes = array(
             'uid'     => $uid,
             'url'     => $url,
-            'pattern' => $pattern,
+//            'pattern' => $pattern,
+            'type'    => $type,
             'group'   =>$group
         );
         try
@@ -46,8 +47,9 @@ class WebhookRepositoryEloquent implements WebhookRepository {
         $webhook->uid     = $uid;
         $webhook->url     = $url;
         $webhook->token   = $this->SignatureLib->genrateToken($attributes);
-        $webhook->pattern = $pattern;
+        $webhook->pattern = json_encode($fields);
         $webhook->group   = $group;
+        $webhook->type    = $type;
         $webhook->status  = 1;
         $webhook->save();
 

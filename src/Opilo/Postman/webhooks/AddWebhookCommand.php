@@ -6,14 +6,16 @@ class AddWebhookCommand {
     public $uid;
     public $token;
     public $url;
-    public $pattern;
+    public $fields;
+    public $type;
     public $status;
 
-    public function __construct($uid,$url,$pattern,$group)
+    public function __construct($uid,$url,$fields,$type,$group)
     {
         $this->uid       = $uid;
         $this->url       = $url;
-        $this->pattern   = $pattern;
+        $this->fields    = $fields;
+        $this->type      = $type;
         $this->group     = $group;
     }
 } 

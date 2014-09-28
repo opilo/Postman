@@ -16,7 +16,8 @@ class AddWebhookCommandHandler {
         $webhook = $this->WebhookRepository->makeNew(
             $command->uid,
             $command->url,
-            $command->pattern,
+            $command->fields,
+            $command->type,
             $command->group
         );
 

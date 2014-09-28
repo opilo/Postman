@@ -12,7 +12,8 @@ class WebhookValidator extends  FormValidator {
     protected $rules = [
         'uid' => 'required',
         'url' => 'required',
-        'pattern' => 'required',
+//        'pattern' => 'required',
+        'type' => 'required',
         'group' => '',
     ];
 } 
