@@ -23,18 +23,23 @@ class WebhookRepositoryEloquent implements WebhookRepository {
         return $this->model->newInstance($attributes);
     }
 
-    public function makeNew($uid,$url,$fields,$type,$group)
+
+    public function getByID($id){
+        return $this->model->findOrFail($id);
+    }
+
+    public function makeNew($webhook)
     {
-        $webhook = $this->model->newInstance();
+        $webhookModel = $this->model->newInstance();
 
         // Validation
         $attributes = array(
-            'uid'     => $uid,
-            'url'     => $url,
-//            'pattern' => $pattern,
-            'type'    => $type,
-            'group'   =>$group
+            'uid'     => $webhook->uid,
+            'url'     => $webhook->url,
+            'type'    => $webhook->type,
+            'group'   => $webhook->group
         );
+
         try
         {
             $this->validator->validate($attributes);
@@ -44,16 +49,66 @@ class WebhookRepositoryEloquent implements WebhookRepository {
             dd($e->getErrors());
         }
 
-        $webhook->uid     = $uid;
-        $webhook->url     = $url;
-        $webhook->token   = $this->SignatureLib->genrateToken($attributes);
-        $webhook->pattern = json_encode($fields);
-        $webhook->group   = $group;
-        $webhook->type    = $type;
-        $webhook->status  = 1;
+        $webhookModel->uid     = $webhook->uid;
+        $webhookModel->url     = $webhook->url;
+        $webhookModel->token   = $this->SignatureLib->genrateToken();
+        $webhookModel->pattern = json_encode($webhook->fields);
+        $webhookModel->group   = $webhook->group;
+        $webhookModel->type    = $webhook->type;
+        $webhookModel->status  = 1;
+        $webhookModel->save();
+
+        return $webhookModel;
+    }
+
+    /**
+     * @param $newWebhook
+     * @return \Illuminate\Support\Collection|static
+     */
+    public function Change($newWebhook){
+
+        $webhook = $this->getByID($newWebhook->id);
+
+        if(!is_null($newWebhook->newtoken)){
+            if($newWebhook->newtoken == true)
+                $webhook->token   = $this->SignatureLib->genrateToken();
+            unset($newWebhook->newtoken);
+        }
+
+        if(!is_null($newWebhook->fields)){
+            $webhook->pattern = json_encode($newWebhook->fields);
+            unset($newWebhook->fields);
+        }
+
+        foreach($newWebhook as $key=>$val){
+            if(!is_null($newWebhook->{$key}) ){
+                $webhook->{$key} = $val;
+            }
+        }
+
+        $attributes = array(
+            'uid'     => $webhook->uid,
+            'url'     => $webhook->url,
+            'type'    => $webhook->type,
+            'group'   => $webhook->group
+        );
+
+        try
+        {
+            $this->validator->validate($attributes);
+        }
+        catch (FormValidationException $e)
+        {
+            dd($e->getErrors());
+        }
+
         $webhook->save();
 
         return $webhook;
+    }
+
+    public function ChangeStatus($id,$status){
+
     }
 
 }

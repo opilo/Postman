@@ -4,11 +4,11 @@
 class AddWebhookCommand {
 
     public $uid;
-    public $token;
     public $url;
+    public $token;
     public $fields;
     public $type;
-    public $status;
+    public $group;
 
     public function __construct($uid,$url,$fields,$type,$group)
     {

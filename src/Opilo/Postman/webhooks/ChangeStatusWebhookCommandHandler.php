@@ -4,7 +4,7 @@ use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 use Opilo\Postman\Repositories\WebhookRepository as WebhookRepository;
 
-class AddWebhookCommandHandler {
+class ChangeStatusWebhookCommandHandler {
     use DispatchableTrait;
 
     public function __construct(WebhookRepository $WebhookRepository)
@@ -13,8 +13,8 @@ class AddWebhookCommandHandler {
     }
     public function handle($command)
     {
-        $webhook = $this->WebhookRepository->makeNew($command);
 
+        $webhook = $this->WebhookRepository->ChangeStatus($command);
         return $webhook;
     }
 } 
