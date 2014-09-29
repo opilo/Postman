@@ -1,4 +1,4 @@
-<?php namespace Opilo\Postman\Webhooks;
+<?php namespace Opilo\Postman\WebhookCommands;
 
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;

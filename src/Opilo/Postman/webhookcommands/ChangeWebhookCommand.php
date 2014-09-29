@@ -1,4 +1,4 @@
-<?php namespace Opilo\Postman\Webhooks;
+<?php namespace Opilo\Postman\WebhookCommands;
 
 
 class ChangeWebhookCommand {

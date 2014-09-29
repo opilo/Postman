@@ -1,9 +1,11 @@
-<?php namespace Opilo\Postman\Webhooks;
+<?php namespace Opilo\Postman\WebhookCommands;
 
 use Laracasts\Commander\CommandHandler;
+use Laracasts\Commander\Events\DispatchableTrait;
 use Opilo\Postman\Repositories\WebhookRepository as WebhookRepository;
 
-class ChangeWebhookCommandHandler {
+class AddWebhookCommandHandler {
+    use DispatchableTrait;
 
     public function __construct(WebhookRepository $WebhookRepository)
     {
@@ -11,8 +13,7 @@ class ChangeWebhookCommandHandler {
     }
     public function handle($command)
     {
-
-        $webhook = $this->WebhookRepository->Change($command);
+        $webhook = $this->WebhookRepository->makeNew($command);
 
         return $webhook;
     }
